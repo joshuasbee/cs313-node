@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Prove 09</title>
 </head>
 <body>
-  <h1>prove 09</h1>
+  <div class='container'>
+    <h1 class='row justify-content-center'>prove 09</h1>
+      <form action='/mail' method="GET">
+        <div class='form-group row justify-content-center'>
+          <label for="weight">Weight (oz): </label>
+          <input type="number" id="weight" name="weight" step="0.0000001" min='1' max='13'>
+        </div>
+        <div class='row justify-content-center'>
+          <select class="form-control form-control-sm" id='type' name='type'>
+            <option value="stamped">Letters (Stamped)</option>
+            <option value="metered">Letters (Metered)</option>
+            <option value="flats">Large Envelopes (Flats)</option>
+            <option value="package">First-Class Package Service—Retail</option>
+          </select>
+        </div>
+        <div class='row justify-content-center'>
+          <button type="submit" class='btn btn-primary'>Submit</button>
+        </div>
+      </form>
+
+
+  </div>
 </body>
 </html>
+<!-- Letters (Stamped)
+
+Letters (Metered)
+
+Large Envelopes (Flats)
+
+First-Class Package Service—Retail -->
