@@ -11,7 +11,8 @@
 -- );
 CREATE TABLE users(
   user_id  SERIAL      NOT NULL PRIMARY KEY,
-  username VARCHAR(30) NOT NULL
+  username VARCHAR(30) NOT NULL,
+  pass     TEXT        NOT NULL
 );
 
 CREATE TABLE blob(

@@ -7,6 +7,24 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Results page</h1>
+  <div class='container'>
+    <div class='justify-content-center'>
+      <h1 class='row justify-content-center'>Results page</h1>
+      <div class='row justify-content-center'>
+        User ID: <%= uid %>
+      </div>
+      <div class='row justify-content-center'>
+        <ul>
+        <% 
+        blobs.forEach((blob) => {
+        %>
+        <li><%= blob.content %></li>
+        <% }) %></ul>
+      </div>
+      <div class='row justify-content-center'>
+
+      </div>
+    </div>
+  </div>
 </body>
 </html>

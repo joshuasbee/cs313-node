@@ -5,6 +5,6 @@
 --not sure if i need this alter table
 -- ALTER TABLE user_to_cart ADD FOREIGN KEY (cart_id) REFERENCES cart_item(cart_id) ON DELETE CASCADE;
 
-INSERT INTO users(username) VALUES ('joshbee');
+INSERT INTO users(username, pass) VALUES ('joshbee', 'passw0rd');
 INSERT INTO blob(content, user_id) VALUES ('test blob', 1);
 INSERT INTO blob(content, user_id) VALUES ('second test blob', 1);
