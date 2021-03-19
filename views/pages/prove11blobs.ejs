@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/11c7d798d9.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href='/stylesheets/style11.css'>
+    <title>Blobber</title>
+</head>
+<body>
+  <span class='float-left'>
+    <form action='' method='POST'><%# add action later to logout%>
+      <input type="hidden" value='1' id='user' name='user'>
+      <button type='submit' class='rounded'>Logout (not working yet)</button>
+    </form>
+  </span>
+
+  <div class='container'>
+    <div class='justify-content-center'>
+      <h1 class='row justify-content-center' id='blobber'>Blobber</h1>
+      <form action='/search' method='get'>
+        <div class="input-group rounded mx-auto" id="search">
+        <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" name="search" id="search_input">
+       <%# The name is what is identified in the JS that this form goes to %> 
+        <%# <input type='hidden' value='1' name='user'> %> 
+          <span class="input-group-append">
+            <%# submit for the other thing to work %> 
+            <button class="btn btn-outline-secondary border-left-0 border" type="button" id='search_button' onclick='ajaxHandle()'>
+            <i class="fa fa-search"></i>
+            </button>
+          </span>
+      </form>
+        </div>
+      <br>
+      <div id='blobs'>
+        <%blobs.forEach((blob) => { %>
+          <div class='jumbotron row justify-content-center'>
+            <%= blob.content %>
+          </div>
+          <% }) %>
+    </div>
+  </div>
+
+  <script src='prove11blobs.js'></script>
+</body>
+</html>

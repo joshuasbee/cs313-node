@@ -18,5 +18,6 @@ CREATE TABLE users(
 CREATE TABLE blob(
   blob_id SERIAL       NOT NULL PRIMARY KEY,
   content VARCHAR(250) NOT NULL,
+  likes   INTEGER      NOT NULL,
   user_id INTEGER      NOT NULL REFERENCES users(user_id)
 );

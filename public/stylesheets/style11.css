@@ -1,0 +1,23 @@
+body {
+  background-color: #98cfff;
+}
+
+body,html {
+  height: 100%;
+}
+
+button {
+  background-color: #afe432;
+}
+
+.jumbotron {
+  background-color: #5c9de8;
+}
+
+#blobber {
+  color: #0c1133;
+}
+
+#search_button {
+  background-color: #afe432;
+}

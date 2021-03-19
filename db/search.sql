@@ -1,0 +1,1 @@
+select * from blob where user_id=(select user_id from users where username='joshbee');
