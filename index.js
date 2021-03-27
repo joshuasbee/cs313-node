@@ -1,8 +1,16 @@
 const express = require('express')
+const session = require('express-session')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
 express()
+  .use(session({
+    name: 'user_id',
+    secret: 'secret-key',
+    saveUninitialized: true,
+    resave: true
+  //  store: new FileStore()
+  }))
   .use(express.static(path.join(__dirname, 'public')))
   .use(express.urlencoded({extended:true}))//support url encoded bodies
   .set('views', path.join(__dirname, 'views'))
@@ -14,8 +22,18 @@ express()
   .post('/db10', require('./API/prove10controller'))
   .get('/prove11', (req, res) => res.render('pages/prove11'))
   .post('/db11', require('./API/prove11controller'))
-//for search functionality
-  .get('/search', require ('./API/prove11search'))
+  
+  //for search bar
+  .get('/search', require ('./API/prove12search'))
+
+  .get('/prove12', (req, res) => res.render('pages/prove12'))
+  .get('/login12', (req, res) => res.render('pages/prove12login'))//for login
+  .post('/login', require('./API/prove12login'))
+  
+  .get('/postblob', require ('./API/post_blob.js'))
+
+
+
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 // This line can work to allow all folders in the public directory to be accessible rather than doing lots

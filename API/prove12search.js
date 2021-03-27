@@ -7,8 +7,9 @@ const pool = new Pool ({connectionString: connectionString,
 
 function db_search(req, res) {
   let search = [req.query.search]
-  var sql = 'select * from blob where user_id=(select user_id from users where username=$1::text)'
-  pool.query(sql, search, (err, resp) => {
+  // var sql = 'select * from blob where user_id=(select user_id from users where username=$1::text)'
+  var sql = 'select * from blob where content ilike \'%' + search + '%\''
+  pool.query(sql, (err, resp) => {
     console.log(err ? err.stack : '')
     res.json(resp.rows)
   })

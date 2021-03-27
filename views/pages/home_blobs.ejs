@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/11c7d798d9.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href='/stylesheets/style11.css'>
+    <title>Blobber</title>
+</head>
+<body>
+  <span class='float-left'>
+    <form><%# add action later to logout%>
+      <button type='button' class='rounded' onclick="document.location='/prove12'">Logout (not working yet)</button>
+    </form>
+  </span>
+
+  <span class='float-right'>
+    <form>
+      <button type='button' class='rounded' onclick="show_new_blob_form()">new blob</button>
+    </form>
+  </span>
+
+  <div class='container'>
+    <div class='justify-content-center'>
+      <h1 onclick = 'home()' class='row justify-content-center' id='blobber'>Blobber</h1>
+      <form action='/search' method='get' onkeydown="return event.key != 'Enter';"> <%# onkeydown part prevents enter key from submitting form %> 
+        <div class="input-group rounded mx-auto" id="search">
+        <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" name="search" id="search_input">
+       <%# The name is what is identified in the JS that this form goes to %> 
+        <%# <input type='hidden' value='1' name='user'> %> 
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary border-left-0 border" type="button" id='search_button' onclick='ajaxHandle()'>
+            <i class="fa fa-search"></i>
+            </button>
+          </span>
+      </form>
+    </div>
+      <br>
+      <div style="display: none" id='new_blob_form'>
+        <form>
+          <textarea type='text' rows=5 cols=100 name='blob_content' placeholder="New Blob here" id='blob_content'></textarea><%# TODO LIMIT input size %> 
+          <br>
+          <input type="hidden" value='<%= uid %>' id='uid' name='uid'>
+          <input type='button' onclick='insert_blob()' value="Post!">
+        </form>
+      </div>
+      <div id='blobs'>
+        <%blobs.forEach((blob) => { %>
+          <div class='jumbotron row justify-content-center'>
+            <%= blob.content %>
+          </div>
+          <% }) %>
+    </div>
+  </div>
+
+  <script src='prove12blobs.js'></script>
+  <script src='new_blob.js'></script>
+</body>
+</html>

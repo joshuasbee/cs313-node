@@ -8,14 +8,12 @@ function db_display(req, res) {
   const pool = new Pool ({connectionString: connectionString,
                         ssl: {rejectUnauthorized: false}
   })
-  // pool.connect()
   pool.query('SELECT * from blob', (err, resp) => {
     console.log(err ? err.stack : '')
     for(let i=0; i < resp.rows.length; i++){
       blobs[i] = resp.rows[i]
     }
-    // pool.end()
-    res.render('./pages/prove11blobs', {uid: user_id, blobs: blobs})
+    res.render('./pages/home_blobs', {uid: user_id, blobs: blobs})
   })
-}  
+}
 module.exports = db_display

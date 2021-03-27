@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://use.fontawesome.com/11c7d798d9.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href='/stylesheets/style11.css'>
+    <title>Blobber</title>
+</head>
+<body>
+  <span class='float-left'>
+    <%#   <form action='' method='POST'>
+      <input type="hidden" value='1' id='user' name='user'>
+      <button type='submit' class='rounded'>Logout (not working yet)</button>
+    </form>  %>
+  </span>
+
+  <div class='container'>
+    <div class='justify-content-center'>
+      <h1 class='row justify-content-center' id='blobber'>Blobber</h1>
+      <form action='/login' method='post'>
+        <input class="form-control py-2 border-right-0 border" type="text" placeholder="username" name="username" id="username">
+        <input class="form-control py-2 border-right-0 border" type="password" placeholder="password" name="password" id="password">
+        <%# The name is what is identified in the JS that this form goes to %>
+        <div class='row justify-content-center'>
+          <button type='submit' class='rounded'>Sign in/up</button>
+        </div>
+      </form>
+      <% if (locals.error) { alert('That username is already taken') }%>
+       
+    </div>     
+  </div>
+
+  <script src='prove12blobs.js'></script>
+</body>
+</html>
