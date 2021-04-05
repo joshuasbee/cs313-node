@@ -31,7 +31,7 @@ express()
   .post('/login', require('./API/prove12login'))
   
   .get('/postblob', require ('./API/post_blob.js'))
-
+  .get('/prove13', (req, res) => res.render('pages/prove12'))
 
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
