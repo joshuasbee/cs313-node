@@ -21,16 +21,17 @@
     <div class='justify-content-center'>
       <h1 class='row justify-content-center' id='blobber'>Blobber</h1>
       <form action='/login' method='post'>
-        <input class="form-control py-2 border-right-0 border" type="text" placeholder="username" name="username" id="username">
-        <input class="form-control py-2 border-right-0 border" type="password" placeholder="password" name="password" id="password">
+        <input class="form-control py-2 border-right-0 border" type="text" placeholder="username" name="username" id="username" minlength="1">
+        <input class="form-control py-2 border-right-0 border" type="password" placeholder="password" name="password" id="password" minlength="1">
         <%# The name is what is identified in the JS that this form goes to %>
         <div class='row justify-content-center'>
-          <button type='submit' class='rounded'>Sign in/up</button>
+          <input type='submit' class='rounded button' value="Sign in/up">
         </div>
       </form>
-      <% if (locals.error) { alert('That username is already taken') }%>
-       
-    </div>     
+      <% if (typeof(error) != 'undefined') { %>
+        <div class="error"><%= error %></div> 
+      <% } %>
+    </div>
   </div>
 
   <script src='prove12blobs.js'></script>

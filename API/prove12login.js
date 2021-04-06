@@ -10,16 +10,32 @@ let blobs = new Array()
 function verify(req, res) {
   let username = req.body.username
   let pass = req.body.password
+  if (username.length < 1 || pass.length < 1) {
+    res.render('./pages/prove12login', {error: "Enter a username and password"})
+  }
   let correct = false
+
+  pool.query('SELECT username FROM users WHERE username=\'' + username + '\'', (err, resp) => {
+    console.log(err ? err.stack : '')
+    if (err) {
+      console.log("err in selecting username")
+    }
+    if (resp.rows.length > 0) {
+      //exists
+      console.log("exists")
+    }
+    else {
+      //does not exist
+      console.log("does not exist")
+    }
+  })
+
 
   console.log('checking password')
   pool.query('SELECT pass FROM users WHERE username=\'' + username + '\'', (err, resp) => {
     console.log(err ? err.stack : '')
     if (err) {
-      // var uid = insert_user(username, pass)
-      // if (uid == -1) {
-        res.render('./pages/prove12login', {blobs: blobs, error: -1})//This never gets called I think
-      // }
+        res.render('./pages/prove12login', {blobs: blobs, error: -1})
     }
 
     if (resp.rows.length > 0) {
@@ -34,7 +50,7 @@ function verify(req, res) {
     }
     else {
       console.log("incorrect password")
-      insert_user(username, pass, res, false)
+      res.render('./pages/prove12login', {error: 'Incorrect Password'})
     }
   })
 }
@@ -49,11 +65,13 @@ function insert_user(username, pass, res, exists) {
       }
       else {//SIGNING UP *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
         console.log("This is the else and we pass !exists (false)")
-        get_uid(username, res, !exists)//exists is passed in as false
+        get_uid(username, res, !exists)//exists is passed in as false  
       }
     })
   }
-  get_uid(username, res, exists)//exists is true here, meaning we did not try to insert
+  else {
+    get_uid(username, res, exists)//exists is true here, meaning we did not try to insert
+  }
 }
 
 function get_uid (username, res, correctPass) {
@@ -62,7 +80,7 @@ function get_uid (username, res, correctPass) {
       console.log(err ? err.stack : '')
       console.log("querying userID from DB, ID:" + resp_id.rows[0].user_id)
 
-      pool.query('SELECT * FROM blob order by blob_id desc', (err, resp) => {// If the login is successful
+      pool.query('SELECT * FROM blob INNER JOIN users on blob.user_id=users.user_id order by blob_id desc', (err, resp) => {// If the login is successful
         console.log(err ? err.stack : '')
         for(let i=0; i < resp.rows.length; i++){
           blobs[i] = resp.rows[i]

@@ -48,8 +48,10 @@
       </div>
       <div id='blobs'>
         <%blobs.forEach((blob) => { %>
+          
           <div class='jumbotron row justify-content-center'>
-            <%= blob.content %>
+            <%= blob.content %><br>
+            <%= blob.username %>
           </div>
           <% }) %>
     </div>

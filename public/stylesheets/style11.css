@@ -10,6 +10,10 @@ button {
   background-color: #afe432;
 }
 
+.button {
+  background-color: #afe432;
+}
+
 .jumbotron {
   background-color: #5c9de8;
 }
@@ -20,4 +24,8 @@ button {
 
 #search_button {
   background-color: #afe432;
+}
+
+.error{
+  color: red;
 }
