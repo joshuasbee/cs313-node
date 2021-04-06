@@ -38,9 +38,7 @@ function home() {
     console.log(err ? err.stack : '')
     for(let i=0; i < resp.rows.length; i++){
       html += resp.rows[i].toString()
-      // blobs[i] = resp.rows[i]
     }
-    // res.render('./pages/home_blobs', {uid: user_id, blobs: blobs})
   })
 
   $.ajax({

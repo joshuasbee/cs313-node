@@ -6,9 +6,11 @@
 --   ON cart_item.item_id = items.item_id;
 
 
-
 SELECT * 
 FROM blob 
 INNER JOIN users 
-on blob.user_id=users.user_id
-order by blob_id desc;
+ON blob.user_id=users.user_id
+WHERE content ilike '%joe%'
+ORDER BY blob_id DESC;
+
+-- select * from blob where content ilike %'joe'%

@@ -27,20 +27,20 @@
       <h1 onclick = 'home()' class='row justify-content-center' id='blobber'>Blobber</h1>
       <form action='/search' method='get' onkeydown="return event.key != 'Enter';"> <%# onkeydown part prevents enter key from submitting form %> 
         <div class="input-group rounded mx-auto" id="search">
-        <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" name="search" id="search_input">
-       <%# The name is what is identified in the JS that this form goes to %> 
-        <%# <input type='hidden' value='1' name='user'> %> 
+          <input class="form-control py-2 border-right-0 border" type="search" placeholder="search" name="search" id="search_input">
+          <%# The name is what is identified in the JS that this form goes to %> 
+          <%# <input type='hidden' value='1' name='user'> %> 
           <span class="input-group-append">
             <button class="btn btn-outline-secondary border-left-0 border" type="button" id='search_button' onclick='ajaxHandle()'>
             <i class="fa fa-search"></i>
             </button>
           </span>
+        </div>
       </form>
-    </div>
       <br>
       <div style="display: none" id='new_blob_form'>
         <form>
-          <textarea type='text' rows=5 cols=100 name='blob_content' placeholder="New Blob here" id='blob_content'></textarea><%# TODO LIMIT input size %> 
+          <textarea type='text' rows=5 cols=100 name='blob_content' placeholder="New Blob here" id='blob_content' maxlength="249"></textarea><%# TODO LIMIT input size %> 
           <br>
           <input type="hidden" value='<%= uid %>' id='uid' name='uid'>
           <input type='button' onclick='insert_blob()' value="Post!">
@@ -50,8 +50,8 @@
         <%blobs.forEach((blob) => { %>
           
           <div class='jumbotron row justify-content-center'>
-            <%= blob.content %><br>
-            <%= blob.username %>
+            <div><%= blob.content %></div>
+            <div class="greentext"> &nbsp;-- <%= blob.username %></div>
           </div>
           <% }) %>
     </div>

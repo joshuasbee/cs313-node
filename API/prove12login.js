@@ -87,9 +87,7 @@ function get_uid (username, res, correctPass) {
         }
         console.log('blob array created, going to main page with blobs')
         res.render('./pages/home_blobs', {blobs: blobs, uid: resp_id.rows[0].user_id})
-//ERROR cannot set headers after they are sent to the client here ^ 
       })
-      // res.render('./pages/home_blobs', {blobs: blobs, uid: resp_id.rows[0].user_id})
     })
   }
   else {
